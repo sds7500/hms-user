@@ -1,5 +1,5 @@
 module.exports = {
-    jwtSecret: process.env.jwtSecret,
+    JWTsecretKey: process.env.JWTsecretKey,
     mongoURI: process.env.mongoURI,
     port: process.env.PORT
   };
