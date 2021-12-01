@@ -11,6 +11,12 @@ const userController=require('../controllers/userController');
 
 //routes to handle users request
 
+// to get the list of users
+router.get('/',userController.users);
+
+//to get the list of booking
+router.get('/booking',userController.bookings);
+
 // login: to login registered user
 router.post('/login',userController.login);
 
@@ -31,5 +37,6 @@ router.post('/book/:hotelId/:type',passportJWT.authenticate(),[hasAfter,hasNo,ha
 
 //cancel: to cancel the booking ( booking id is passed as parameters )
 router.post('/cancel/:id',passportJWT.authenticate(),userController.cancel)
+
 
 module.exports=router;

@@ -194,3 +194,23 @@ exports.cancel=async(req,res,next)=>{
        next(err);
     }
 }
+
+//8:USERS => Get list of users on url
+exports.users=async(req,res,next)=>{
+    try{
+        let users=await User.find();
+        res.send(users);
+    }catch(err){
+        next(err);
+    }
+}
+
+//9:BOOKING => to get all the list of booking 
+exports.bookings=async(req,res,next)=>{
+    try{
+        let booking=await Booking.find();
+        res.send(booking);
+    }catch(err){
+        next(err);
+    }
+}
