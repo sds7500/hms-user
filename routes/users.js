@@ -21,7 +21,7 @@ router.post('/signup',[isEmail,hasUserName,hasPassword],userController.signup);
 router.post('/me',passportJWT.authenticate(),userController.me)
 
 //delete: to delete the user if he wants to
-router.post('/delete',passportJWT.authenticate(),userController.delete)
+router.delete('/delete',passportJWT.authenticate(),userController.delete)
 
 //search: to search for the hotel according to the location ( has following optional query parameters: city,state,pincode )
 router.post('/search',userController.search)
