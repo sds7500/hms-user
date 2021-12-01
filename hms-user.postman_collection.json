@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "da488620-5673-4b63-9505-ec768d95624c",
+		"name": "hms-user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Hotels",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/hotels",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"hotels"
+					]
+				},
+				"description": "GET Request to get the list of hotels available in our database."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Hotels",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"address\": {\r\n\"area\": \"VimanNagar\",\r\n\"city\": \"Pune\",\r\n\"state\": \"Maharastra\",\r\n\"pincode\": 411027\r\n},\r\n\"aminities\": [\"Swmming\",\"Lunch and Dinner\"],\r\n\"type\": [\r\n{\r\n\"roomType\": \"delux\",\r\n\"price\": 550,\r\n\"totalRoom\":30\r\n},\r\n{\r\n\"roomType\": \"superdelux\",\r\n\"price\": 1550,\r\n\"totalRoom\":20\r\n}\r\n],\r\n\"name\": \"Hayat\",\r\n\"rating\": 4.7,\r\n\"__v\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/hotels",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"hotels"
+					]
+				},
+				"description": "POST request to add the information of new hotel in the database.\n\nThe post request must include :\n\n1-Name of the hotel (\"name\")\n\n2-Address of the hotel as nested object having area, city, state and pincode (\"address\")\n\n3-Rating as a number for the given hotel (\"rating\")\n\n4-Aminities an array of strings displaying aminities provided by hotel (\"aminities\")\n\n5-Type an array of objects where each object has roomType totalRoom and price for the given type of room (\"type\")"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hotels id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/hotels/61a5f4e5c2a6cd0ae0a30f23",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"hotels",
+						"61a5f4e5c2a6cd0ae0a30f23"
+					]
+				},
+				"description": "GET Request to get the details of particular hotel based on HOTEL ID as parameter"
+			},
+			"response": []
+		},
+		{
+			"name": "delete hotel",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/hotels/61a5f513a15f046ae75d2c12",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"hotels",
+						"61a5f513a15f046ae75d2c12"
+					]
+				},
+				"description": "DELETE a particular Hotel from database based on HOTEL ID as parameter"
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"sds7500\",\r\n    \"name\":\"somya sheti\",\r\n    \"email\":\"terabapp@gmail.am\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/users/signup",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"users",
+						"signup"
+					]
+				},
+				"description": "POST request to add the new user in database which must contain name, email and password for user"
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"terabapp@gmail.am\",\r\n    \"password\":\"sds7500\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/users/login",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				},
+				"description": "POST request to login the registered user must include valid name and password"
+			},
+			"response": []
+		},
+		{
+			"name": "Current User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYxYTY2NjhhZTNhNWRlMzk1N2MwNWYyZCJ9.n8utxzTIeYxW6Zhtw9BydV4u8MbuYONjTX-u6en1yXI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/users/me",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				},
+				"description": "POST request to get the details of active user with the help of token."
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/users/delete",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"users",
+						"delete"
+					]
+				},
+				"description": "Delete a registered user from database with USER ID as parameter to the URL"
+			},
+			"response": []
+		},
+		{
+			"name": "search Hotel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/users/search?pincode=411027",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"users",
+						"search"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "pincode",
+							"value": "411027"
+						}
+					]
+				},
+				"description": "POST request to search hotel\n\nCan use any combination of city, state and pincode as query string to the URL to search for the given hotel in the given area."
+			},
+			"response": []
+		},
+		{
+			"name": "book hotel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYxYTY2NjhhZTNhNWRlMzk1N2MwNWYyZCJ9.n8utxzTIeYxW6Zhtw9BydV4u8MbuYONjTX-u6en1yXI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"after\":3,\r\n    \"till\":3,\r\n    \"number\":4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/users/book/61a66667e3a5de3957c05f22/delux",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"users",
+						"book",
+						"61a66667e3a5de3957c05f22",
+						"delux"
+					]
+				},
+				"description": "POST request to book a hotel must include following\n\n1- after how many days you want the hotel to be booked\n\n2- till how many days you want the hotel to be booked\n\n3- number of rooms to be booked"
+			},
+			"response": []
+		},
+		{
+			"name": "cancel hotel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYxYTY2NjhhZTNhNWRlMzk1N2MwNWYyZCJ9.n8utxzTIeYxW6Zhtw9BydV4u8MbuYONjTX-u6en1yXI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/users/cancel/61a66845e3a5de3957c05f42",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"users",
+						"cancel",
+						"61a66845e3a5de3957c05f42"
+					]
+				},
+				"description": "POST request to cancel a booking done by user where BOOKING ID is passed as a parameter"
+			},
+			"response": []
+		}
+	]
+}
